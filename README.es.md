@@ -9,6 +9,11 @@
 Apretás **Win+Z** y se abre, donde está el puntero del mouse, un menú con
 tus programas, carpetas, documentos y sitios web.
 
+Popa es el **sucesor espiritual de Quick Cliq**, el querido lanzador de
+menú que ya no se mantiene: la misma idea (tus programas en un menú
+emergente, a una tecla de distancia) rehecha desde cero para Windows 11.
+Puede importar tu menú de Quick Cliq.
+
 [Read in English](README.md)
 
 - **Un solo archivo, sin instalación.** `Popa.exe` pesa unos 0,6 MB y no
@@ -59,12 +64,12 @@ primera letra de un elemento para saltar a él.
 - Los elementos cuyo programa no se encuentra aparecen en rojo.
 - Los cambios se guardan solos.
 
-### Importar una configuración
+### Importar una configuración (usuarios de Quick Cliq)
 
-En el editor, **Importar configuración…** y elegí una configuración de menú
-en XML (un archivo con elementos `<menu>` e `<item>`). Se importan
-submenús, separadores, comandos e iconos; el archivo original solo se lee,
-nunca se modifica.
+En el editor, **Importar configuración…** y elegí tu `qc_conf.xml` de Quick
+Cliq (o cualquier configuración de menú en XML con elementos `<menu>` e
+`<item>`). Se importan submenús, separadores, comandos e iconos; el archivo
+original solo se lee, nunca se modifica.
 
 ### Opciones
 
@@ -124,5 +129,7 @@ O abrí `Popa.slnx` en Visual Studio. La estructura del proyecto está en el
 
 ## Licencia
 
-[MIT](LICENSE). nlohmann/json también es MIT
+[MIT](LICENSE). Popa es un proyecto independiente, sin relación con Quick
+Cliq ni con su autor; el nombre solo se usa para describir la
+compatibilidad. nlohmann/json también es MIT
 ([third_party/nlohmann/LICENSE.MIT](third_party/nlohmann/LICENSE.MIT)).

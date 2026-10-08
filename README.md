@@ -9,6 +9,11 @@
 **Win+Z** and a popup menu with your programs, folders, documents and
 websites opens where the mouse pointer is.
 
+Popa is a **spiritual successor to Quick Cliq**, the much-loved menu
+launcher that is no longer maintained: the same idea (your programs in a
+popup menu, one keystroke away) rebuilt from scratch for Windows 11. It can
+import your existing Quick Cliq menu.
+
 [Leer en español](README.es.md)
 
 - **One file, nothing to install.** `Popa.exe` is about 0.6 MB and needs no
@@ -58,12 +63,12 @@ first letter of an entry to jump to it.
 - Entries whose program cannot be found are shown in red.
 - Changes are saved automatically.
 
-### Importing a configuration
+### Importing a configuration (Quick Cliq users)
 
-In the editor, **Import configuration…** and choose an XML menu
-configuration (a file with `<menu>` and `<item>` elements). Submenus,
-separators, commands and icons are imported; the original file is only
-read, never changed.
+In the editor, **Import configuration…** and choose your Quick Cliq
+`qc_conf.xml` (or any XML menu configuration with `<menu>` and `<item>`
+elements). Submenus, separators, commands and icons are imported; the
+original file is only read, never changed.
 
 ### Options
 
@@ -152,5 +157,6 @@ size.
 
 ## License
 
-[MIT](LICENSE). nlohmann/json is also MIT licensed
+[MIT](LICENSE). Popa is an independent project, not affiliated with Quick
+Cliq or its author; the name is only used to describe compatibility. nlohmann/json is also MIT licensed
 ([third_party/nlohmann/LICENSE.MIT](third_party/nlohmann/LICENSE.MIT)).

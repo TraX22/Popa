@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+  Application manifest. Windows reads it when the .exe starts and uses it to
+  decide which version of system components and behaviors the app gets.
+  The linker merges this file with the one it generates itself.
+-->
+<assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0"
+          xmlns:asmv3="urn:schemas-microsoft-com:asm.v3">
+
+  <!--
+    Common Controls version 6. Without this, buttons, tree views and other
+    standard controls use the old Windows 2000 look. Version 6 lives in
+    comctl32.dll side by side with version 5; the manifest picks it.
+  -->
+  <dependency>
+    <dependentAssembly>
+      <assemblyIdentity type="win32" name="Microsoft.Windows.Common-Controls"
+                        version="6.0.0.0" processorArchitecture="*"
+                        publicKeyToken="6595b64144ccf1df" language="*" />
+    </dependentAssembly>
+  </dependency>
+
+  <!--
+    Supported OS: Windows 10 and 11 share this GUID. Declaring it turns off
+    compatibility shims meant for old programs (for example, version lies).
+  -->
+  <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">
+    <application>
+      <supportedOS Id="{8e0f7a12-bfb3-4fe8-b9a5-48fd50a15a9a}" />
+    </application>
+  </compatibility>
+
+  <asmv3:application>
+    <asmv3:windowsSettings>
+      <!--
+        Per-monitor DPI awareness v2: the app is told the real DPI of each
+        monitor and draws itself sharp at any scaling. Without it, Windows
+        renders the app at 96 DPI and stretches the bitmap, which looks blurry.
+        The first element is for older Windows 10; the second one wins on newer.
+      -->
+      <dpiAware xmlns="http://schemas.microsoft.com/SMI/2005/WindowsSettings">true/pm</dpiAware>
+      <dpiAwareness xmlns="http://schemas.microsoft.com/SMI/2016/WindowsSettings">PerMonitorV2, PerMonitor</dpiAwareness>
+      <!-- Use UTF-8 as the process code page for the few narrow ("A") APIs. -->
+      <activeCodePage xmlns="http://schemas.microsoft.com/SMI/2019/WindowsSettings">UTF-8</activeCodePage>
+    </asmv3:windowsSettings>
+  </asmv3:application>
+</assembly>

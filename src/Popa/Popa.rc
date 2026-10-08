@@ -1,0 +1,43 @@
+// Resource script: data compiled into Popa.exe (icon and version information).
+// Saved as UTF-8; the resource compiler is told so by the #pragma below.
+#pragma code_page(65001)
+
+#include <windows.h>
+#include "resource.h"
+#include "version.h"
+
+LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
+
+// The icon with the lowest ID is the one Explorer shows for the .exe.
+IDI_POPA ICON "Popa.ico"
+
+// Version information: shown by Explorer in Properties > Details, and read
+// by the updater (Updater.cpp) to compare with the latest release.
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION POPA_VERSION_MAJOR, POPA_VERSION_MINOR, POPA_VERSION_PATCH, 0
+ PRODUCTVERSION POPA_VERSION_MAJOR, POPA_VERSION_MINOR, POPA_VERSION_PATCH, 0
+ FILEFLAGSMASK VS_FFI_FILEFLAGSMASK
+ FILEFLAGS 0
+ FILEOS VOS_NT_WINDOWS32
+ FILETYPE VFT_APP
+ FILESUBTYPE 0
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        // 0409 = English (United States), 04B0 = Unicode.
+        BLOCK "040904B0"
+        BEGIN
+            VALUE "FileDescription", "Popa - application launcher"
+            VALUE "FileVersion", POPA_VERSION_STRING
+            VALUE "ProductName", "Popa"
+            VALUE "ProductVersion", POPA_VERSION_STRING
+            VALUE "InternalName", "Popa"
+            VALUE "OriginalFilename", "Popa.exe"
+            VALUE "LegalCopyright", "MIT License - github.com/TraX22/Popa"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x0409, 1200
+    END
+END

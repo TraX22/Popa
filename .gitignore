@@ -1,0 +1,19 @@
+# Build output
+bin/
+obj/
+TestResults/
+
+# Visual Studio per-user and cache files
+.vs/
+*.user
+*.aps
+
+# Personal data: real configurations used to test the importer locally.
+# The tests in the repository use an anonymized sample instead.
+docs/private/
+
+# Local tooling
+.remember/
+
+# Release output of publish.ps1
+dist/

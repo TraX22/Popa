@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- PopaCore: static library with all the logic that has no user interface. -->
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>18.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{83762449-f6d1-4f9e-85cc-316c64639ca5}</ProjectGuid>
+    <RootNamespace>PopaCore</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Debug'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Release'" Label="Configuration">
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ItemGroup>
+    <ClInclude Include="CommandLine.h" />
+    <ClInclude Include="ConfigStore.h" />
+    <ClInclude Include="DroppedItem.h" />
+    <ClInclude Include="HotkeyText.h" />
+    <ClInclude Include="IconRef.h" />
+    <ClInclude Include="Localization.h" />
+    <ClInclude Include="MenuImporter.h" />
+    <ClInclude Include="Model.h" />
+    <ClInclude Include="Repository.h" />
+    <ClInclude Include="Text.h" />
+    <ClInclude Include="UpdateCheck.h" />
+    <ClInclude Include="Version.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CommandLine.cpp" />
+    <ClCompile Include="ConfigStore.cpp" />
+    <ClCompile Include="DroppedItem.cpp" />
+    <ClCompile Include="HotkeyText.cpp" />
+    <ClCompile Include="IconRef.cpp" />
+    <ClCompile Include="Localization.cpp" />
+    <ClCompile Include="MenuImporter.cpp" />
+    <ClCompile Include="Model.cpp" />
+    <ClCompile Include="Text.cpp" />
+    <ClCompile Include="UpdateCheck.cpp" />
+    <ClCompile Include="Version.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+</Project>

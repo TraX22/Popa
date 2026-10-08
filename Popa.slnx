@@ -1,0 +1,12 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+  </Configurations>
+  <Folder Name="/src/">
+    <Project Path="src/Popa/Popa.vcxproj" Id="32a8d1cb-bfd5-4796-ad2e-c4c5a31a62bc" />
+    <Project Path="src/PopaCore/PopaCore.vcxproj" Id="83762449-f6d1-4f9e-85cc-316c64639ca5" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/PopaTests/PopaTests.vcxproj" Id="b2d916d4-5945-4fa6-985f-9f1bd2fee5ff" />
+  </Folder>
+</Solution>

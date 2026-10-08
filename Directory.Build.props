@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Settings shared by every project in the solution.
+
+  MSBuild automatically imports a file named Directory.Build.props found in
+  any parent folder of a project, so PopaCore, Popa and PopaTests all get the
+  same compiler and linker options without repeating them three times.
+-->
+<Project>
+  <PropertyGroup>
+    <!-- Root of the repository, with a trailing backslash. -->
+    <PopaRoot>$(MSBuildThisFileDirectory)</PopaRoot>
+    <!-- Keep build output out of the source folders: bin\ for results, obj\ for intermediates. -->
+    <OutDir>$(PopaRoot)bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(PopaRoot)obj\$(Platform)\$(Configuration)\$(MSBuildProjectName)\</IntDir>
+    <PlatformToolset>v145</PlatformToolset>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <ConformanceMode>true</ConformanceMode>
+      <WarningLevel>Level4</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <!-- /utf-8: source files are UTF-8 and narrow string literals stay UTF-8 in the binary. -->
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <!-- Lean Windows headers, and no min/max macros that clash with std::min/std::max. -->
+      <PreprocessorDefinitions>WIN32_LEAN_AND_MEAN;NOMINMAX;UNICODE;_UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(PopaRoot)src;$(PopaRoot)third_party;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+
+  <!--
+    Static C++ runtime (/MT, /MTd). The runtime code is copied into Popa.exe,
+    so users do not need the "Visual C++ Redistributable" installed.
+    All projects that link together must use the same runtime, or the linker
+    complains (LNK2038), which is why this lives here and not per project.
+  -->
+  <ItemDefinitionGroup Condition="'$(Configuration)'=='Debug'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+
+  <!--
+    Release is optimized for size (/O1). Link-time code generation (/GL + /LTCG)
+    lets the linker drop and merge functions across files; /OPT:REF removes
+    unreferenced code and /OPT:ICF folds identical functions.
+    No debug information is generated, so the .exe does not embed a path to a
+    .pdb file (which would also leak the local folder layout).
+  -->
+  <ItemDefinitionGroup Condition="'$(Configuration)'=='Release'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <Optimization>MinSpace</Optimization>
+      <FavorSizeOrSpeed>Size</FavorSizeOrSpeed>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalOptions>/Brepro %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+      <!-- /Brepro: reproducible build; the header holds no build timestamp. -->
+      <AdditionalOptions>/Brepro %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+    <Lib>
+      <LinkTimeCodeGeneration>true</LinkTimeCodeGeneration>
+    </Lib>
+  </ItemDefinitionGroup>
+</Project>

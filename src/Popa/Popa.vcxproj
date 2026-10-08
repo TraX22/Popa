@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Popa: the Win32 application. It uses PopaCore; PopaCore never uses it. -->
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>18.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{32a8d1cb-bfd5-4796-ad2e-c4c5a31a62bc}</ProjectGuid>
+    <RootNamespace>Popa</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Debug'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Release'" Label="Configuration">
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ItemDefinitionGroup>
+    <Link>
+      <!-- Windows subsystem: no console window; the entry point is wWinMain. -->
+      <SubSystem>Windows</SubSystem>
+      <!-- comctl32: common controls (LoadIconMetric, tree view...); shcore: per-monitor DPI;
+           windowscodecs: WIC, to read PNG icons; uxtheme: control visual styles;
+           dwmapi: dark title bar; xmllite + shlwapi: reading XML files;
+           winhttp: update check; version: reading the version resource.
+           All are part of Windows. -->
+      <AdditionalDependencies>comctl32.lib;shcore.lib;windowscodecs.lib;uxtheme.lib;dwmapi.lib;xmllite.lib;shlwapi.lib;winhttp.lib;version.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <Manifest>
+      <!-- Merged into the manifest the linker generates (which already adds asInvoker). -->
+      <AdditionalManifestFiles>Popa.manifest;%(AdditionalManifestFiles)</AdditionalManifestFiles>
+    </Manifest>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="App.cpp" />
+    <ClCompile Include="EditorWindow.cpp" />
+    <ClCompile Include="FileDialog.cpp" />
+    <ClCompile Include="Hotkey.cpp" />
+    <ClCompile Include="IconCache.cpp" />
+    <ClCompile Include="IconPickerDialog.cpp" />
+    <ClCompile Include="Launcher.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="PopupMenu.cpp" />
+    <ClCompile Include="SettingsDialog.cpp" />
+    <ClCompile Include="ShortcutResolver.cpp" />
+    <ClCompile Include="Startup.cpp" />
+    <ClCompile Include="Theme.cpp" />
+    <ClCompile Include="Tray.cpp" />
+    <ClCompile Include="Updater.cpp" />
+    <ClCompile Include="XmlFile.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="App.h" />
+    <ClInclude Include="EditorWindow.h" />
+    <ClInclude Include="FileDialog.h" />
+    <ClInclude Include="Hotkey.h" />
+    <ClInclude Include="IconCache.h" />
+    <ClInclude Include="IconPickerDialog.h" />
+    <ClInclude Include="Launcher.h" />
+    <ClInclude Include="PopupMenu.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="SettingsDialog.h" />
+    <ClInclude Include="ShortcutResolver.h" />
+    <ClInclude Include="Startup.h" />
+    <ClInclude Include="Theme.h" />
+    <ClInclude Include="Tray.h" />
+    <ClInclude Include="UiUtil.h" />
+    <ClInclude Include="Updater.h" />
+    <ClInclude Include="version.h" />
+    <ClInclude Include="XmlFile.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Popa.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Popa.ico" />
+    <None Include="Popa.manifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PopaCore\PopaCore.vcxproj">
+      <Project>{83762449-f6d1-4f9e-85cc-316c64639ca5}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+</Project>

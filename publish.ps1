@@ -6,9 +6,11 @@
     1. Reads the version from src\Popa\version.h.
     2. Builds Release and runs the unit tests (build.ps1).
     3. Checks the result: size under 5 MB and the version resource.
-    4. Copies Popa.exe to dist\ and writes its SHA-256 fingerprint.
+    4. Copies Popa.exe and THIRD-PARTY-NOTICES.txt to dist\ and writes the
+       SHA-256 fingerprint of Popa.exe.
     With -Publish it also creates the tag v<version> and the GitHub release
-    with dist\Popa.exe attached, using the GitHub CLI (gh). The release
+    with both files attached, using the GitHub CLI (gh). The notices file
+    must travel with the program: nlohmann/json's MIT license requires it. The release
     notes come from docs\release-notes\v<version>.md.
 
     The asset must be called exactly "Popa.exe": that is the name the
@@ -48,6 +50,7 @@ if ($fileVersion -ne $version) { throw "The version resource says '$fileVersion'
 $dist = Join-Path $root 'dist'
 New-Item -ItemType Directory -Force $dist | Out-Null
 Copy-Item $exe (Join-Path $dist 'Popa.exe') -Force
+Copy-Item (Join-Path $root 'THIRD-PARTY-NOTICES.txt') (Join-Path $dist 'THIRD-PARTY-NOTICES.txt') -Force
 $hash = (Get-FileHash (Join-Path $dist 'Popa.exe') -Algorithm SHA256).Hash.ToLowerInvariant()
 "$hash  Popa.exe" | Set-Content (Join-Path $dist 'Popa.exe.sha256') -Encoding ascii
 Write-Host ("dist\Popa.exe: {0:N0} bytes, SHA-256 {1}" -f $size, $hash) -ForegroundColor Green
@@ -71,6 +74,6 @@ if ($LASTEXITCODE -ne 0) { throw 'Could not push the tag.' }
 
 # GitHub computes and shows the SHA-256 digest of each uploaded file; the
 # updater compares the downloaded Popa.exe against it.
-gh release create $tag (Join-Path $dist 'Popa.exe') --title "Popa $version" --notes-file $notes --verify-tag
+gh release create $tag (Join-Path $dist 'Popa.exe') (Join-Path $dist 'THIRD-PARTY-NOTICES.txt') --title "Popa $version" --notes-file $notes --verify-tag
 if ($LASTEXITCODE -ne 0) { throw 'Could not create the release.' }
 Write-Host "Published $tag." -ForegroundColor Green

@@ -17,3 +17,6 @@ docs/private/
 
 # Release output of publish.ps1
 dist/
+
+# Python bytecode from the tools/ scripts
+__pycache__/

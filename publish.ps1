@@ -10,8 +10,8 @@
        SHA-256 fingerprint of Popa.exe.
     With -Publish it also creates the tag v<version> and the GitHub release
     with both files attached, using the GitHub CLI (gh). The notices file
-    must travel with the program: nlohmann/json's MIT license requires it. The release
-    notes come from docs\release-notes\v<version>.md.
+    must travel with the program: nlohmann/json's MIT license requires it.
+    The release notes come from docs\release-notes\v<version>.md.
 
     The asset must be called exactly "Popa.exe": that is the name the
     updater looks for in the latest release.

@@ -131,5 +131,9 @@ O abrí `Popa.slnx` en Visual Studio. La estructura del proyecto está en el
 
 [MIT](LICENSE). Popa es un proyecto independiente, sin relación con Quick
 Cliq ni con su autor; el nombre solo se usa para describir la
-compatibilidad. nlohmann/json también es MIT
-([third_party/nlohmann/LICENSE.MIT](third_party/nlohmann/LICENSE.MIT)).
+compatibilidad.
+
+Popa incluye [nlohmann/json](https://github.com/nlohmann/json), también MIT
+([third_party/nlohmann/LICENSE.MIT](third_party/nlohmann/LICENSE.MIT)). Su
+aviso está en [THIRD-PARTY-NOTICES.txt](THIRD-PARTY-NOTICES.txt), que
+también se adjunta a cada versión publicada.

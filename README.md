@@ -158,5 +158,9 @@ size.
 ## License
 
 [MIT](LICENSE). Popa is an independent project, not affiliated with Quick
-Cliq or its author; the name is only used to describe compatibility. nlohmann/json is also MIT licensed
-([third_party/nlohmann/LICENSE.MIT](third_party/nlohmann/LICENSE.MIT)).
+Cliq or its author; the name is only used to describe compatibility.
+
+Popa includes [nlohmann/json](https://github.com/nlohmann/json), also MIT
+licensed ([third_party/nlohmann/LICENSE.MIT](third_party/nlohmann/LICENSE.MIT)).
+Its notice is in [THIRD-PARTY-NOTICES.txt](THIRD-PARTY-NOTICES.txt), which
+is also attached to every release.

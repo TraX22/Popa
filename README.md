@@ -1,7 +1,13 @@
+<p align="center">
+  <img src="docs/images/banner.png" width="100%"
+       alt="Popa: your programs, one keystroke away. A tiny, private app launcher for Windows 11.">
+</p>
+
 # Popa
 
-**A small, private application launcher for Windows 11.** Press **Win+Z**
-and a menu with your programs opens where the mouse pointer is.
+**A small, portable and private app launcher for Windows 11.** Press
+**Win+Z** and a popup menu with your programs, folders, documents and
+websites opens where the mouse pointer is.
 
 [Leer en español](README.es.md)
 

@@ -1,8 +1,13 @@
+<p align="center">
+  <img src="docs/images/banner.png" width="100%"
+       alt="Popa: tus programas a una tecla de distancia. Un lanzador de aplicaciones chico y privado para Windows 11.">
+</p>
+
 # Popa
 
-**Un lanzador de aplicaciones chico y privado para Windows 11.** Apretás
-**Win+Z** y se abre, donde está el puntero del mouse, un menú con tus
-programas.
+**Un lanzador de aplicaciones chico, portable y privado para Windows 11.**
+Apretás **Win+Z** y se abre, donde está el puntero del mouse, un menú con
+tus programas, carpetas, documentos y sitios web.
 
 [Read in English](README.md)
 

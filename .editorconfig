@@ -1,0 +1,23 @@
+# Coding conventions of the repository, read by Visual Studio, VS Code and
+# most other editors (https://editorconfig.org).
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 4
+
+[*.{vcxproj,props,slnx,manifest,xml,json,md,yml,yaml}]
+indent_size = 2
+
+[*.md]
+# Two trailing spaces are a line break in Markdown.
+trim_trailing_whitespace = false
+
+# Test data in the format real configurations use: UTF-16 with CRLF.
+[tests/PopaTests/data/*.xml]
+charset = unset
+end_of_line = unset
